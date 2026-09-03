@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Admin — Pedro Nogueira</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/admin.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="admin-body">
+
+    <!-- ── Login Screen ──────────────────────────────────────────────────── -->
+    <div id="login-screen" class="login-screen">
+        <div class="login-box">
+            <div class="login-header">
+                <span class="logo">&lt;CaioFalinacio /&gt;</span>
+                <h1>Painel Admin</h1>
+                <p>Acesso restrito ao proprietário</p>
+            </div>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">E-mail</label>
+                    <input type="email" id="login-email" required placeholder="seu@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Senha</label>
+                    <input type="password" id="login-password" required placeholder="••••••••">
+                </div>
+                <p id="login-error" class="form-status error"></p>
+                <button type="submit" class="btn btn-primary" style="width:100%;">
+                    Entrar
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ── Admin Dashboard ───────────────────────────────────────────────── -->
+    <div id="admin-dashboard" style="display:none;">
+
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-logo">
+                <span class="logo">&lt;CaioFalinacio /&gt;</span>
+                <span class="badge-admin">Admin</span>
+            </div>
+            <nav class="sidebar-nav">
+                <button class="nav-item active" data-tab="tokens">
+                    <i data-lucide="key"></i> Tokens
+                </button>
+                <button class="nav-item" data-tab="requests">
+                    <i data-lucide="inbox"></i> Solicitações
+                    <span id="requests-badge" class="badge" style="display:none;"></span>
+                </button>
+                <button class="nav-item" data-tab="logs">
+                    <i data-lucide="bar-chart-2"></i> Telemetria
+                </button>
+            </nav>
+            <button id="btn-logout" class="btn-logout">
+                <i data-lucide="log-out"></i> Sair
+            </button>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+
+            <!-- ── Aba: Tokens ───────────────────────────────────────────── -->
+            <section id="tab-tokens" class="admin-tab active">
+                <div class="tab-header">
+                    <h2><i data-lucide="key"></i> Tokens de Acesso</h2>
+                    <button id="btn-new-token" class="btn btn-primary">
+                        <i data-lucide="plus"></i> Novo Token
+                    </button>
+                </div>
+
+                <!-- Form: Novo Token -->
+                <div id="new-token-form" class="admin-card" style="display:none;">
+                    <h3>Criar Novo Token</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="token-role">Papel</label>
+                            <select id="token-role" class="form-select">
+                                <option value="contractor">Contratante (Recrutador)</option>
+                                <option value="partner">Parceiro (Técnico)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="token-label">Identificação (opcional)</label>
+                            <input type="text" id="token-label" placeholder="Ex: Empresa XYZ - Ana">
+                        </div>
+                        <div class="form-group">
+                            <label for="token-expires">Expira em (opcional)</label>
+                            <input type="datetime-local" id="token-expires">
+                        </div>
+                    </div>
+                    <div style="display:flex; gap:.75rem; margin-top:.5rem;">
+                        <button id="btn-create-token" class="btn btn-primary">Criar Token</button>
+                        <button id="btn-cancel-token" class="btn btn-secondary">Cancelar</button>
+                    </div>
+                </div>
+
+                <!-- Token criado: link copiável -->
+                <div id="token-result" class="admin-card token-result" style="display:none;">
+                    <h3>✅ Token criado!</h3>
+                    <p>Copie e envie o link abaixo ou envie por e-mail:</p>
+                    <div class="link-box">
+                        <input type="text" id="token-link-input" readonly>
+                        <button id="btn-copy-link" class="btn btn-secondary">
+                            <i data-lucide="copy"></i> Copiar
+                        </button>
+                    </div>
+                    <div class="form-row" style="margin-top:1rem;">
+                        <div class="form-group">
+                            <label for="send-email">Enviar por e-mail</label>
+                            <input type="email" id="send-email" placeholder="destinatario@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="send-name">Nome do destinatário</label>
+                            <input type="text" id="send-name" placeholder="Nome (opcional)">
+                        </div>
+                    </div>
+                    <button id="btn-send-email" class="btn btn-primary">
+                        <i data-lucide="mail"></i> Enviar Link por E-mail
+                    </button>
+                </div>
+
+                <!-- Tabela de tokens -->
+                <div class="admin-card">
+                    <div id="tokens-loading" class="loading-msg">Carregando tokens...</div>
+                    <table id="tokens-table" class="admin-table" style="display:none;">
+                        <thead>
+                            <tr>
+                                <th>Identificação</th>
+                                <th>Papel</th>
+                                <th>Criado em</th>
+                                <th>Expira em</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tokens-tbody"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ── Aba: Solicitações ─────────────────────────────────────── -->
+            <section id="tab-requests" class="admin-tab">
+                <div class="tab-header">
+                    <h2><i data-lucide="inbox"></i> Solicitações de Acesso</h2>
+                    <div class="filter-btns">
+                        <button class="filter-btn active" data-filter="false">Pendentes</button>
+                        <button class="filter-btn" data-filter="true">Revisadas</button>
+                        <button class="filter-btn" data-filter="">Todas</button>
+                    </div>
+                </div>
+                <div class="admin-card">
+                    <div id="requests-loading" class="loading-msg">Carregando solicitações...</div>
+                    <div id="requests-list"></div>
+                </div>
+            </section>
+
+            <!-- ── Aba: Telemetria ───────────────────────────────────────── -->
+            <section id="tab-logs" class="admin-tab">
+                <div class="tab-header">
+                    <h2><i data-lucide="bar-chart-2"></i> Telemetria de Acessos</h2>
+                </div>
+
+                <!-- Resumo -->
+                <div id="logs-summary" class="logs-summary-grid"></div>
+
+                <!-- Tabela de logs -->
+                <div class="admin-card" style="margin-top:1.5rem;">
+                    <h3>Log Completo</h3>
+                    <div id="logs-loading" class="loading-msg">Carregando logs...</div>
+                    <table id="logs-table" class="admin-table" style="display:none;">
+                        <thead>
+                            <tr>
+                                <th>Data/Hora</th>
+                                <th>Token</th>
+                                <th>Papel</th>
+                                <th>Ação</th>
+                                <th>Página</th>
+                            </tr>
+                        </thead>
+                        <tbody id="logs-tbody"></tbody>
+                    </table>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <script src="assets/js/admin.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio Profissional | Pedro Nogueira</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Lucide Icons para ícones modernos -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <!-- Cabeçalho & Navegação Principal -->
+    <header class="header">
+        <div class="container nav-container">
+            <a href="#sobre" class="logo">&lt;PedroNogueira /&gt;</a>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#sobre">Sobre Mim</a></li>
+                    <li><a href="#projetos">Projetos</a></li>
+                    <li><a href="#experiencias">Experiências</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="lang-switch">
+                <button id="lang-pt" class="active">PT</button> | 
+                <button id="lang-en">EN</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. Sobre Mim -->
+        <section id="sobre" class="section">
+            <div class="container hero-container">
+                <div class="hero-text">
+                    <h1>Olá, eu sou <span class="highlight">Pedro Nogueira</span></h1>
+                    <h2 id="hero-subtitle">Desenvolvedor de Software</h2>
+                    <p id="bio-text">
+                        Estudante de Engenharia de Software na PUC Minas. Atualmente estou no quarto período do curso e graduado como Técnico em informatica pela cedaf-UFV, busco unir a precisão do desenvolvimento de sistemas à visão estratégica de negócios.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#contato" class="btn btn-primary" id="btn-contact">Fale Comigo</a>
+                        <a href="#projetos" class="btn btn-secondary" id="btn-projects">Ver Projetos</a>
+                        <button class="btn btn-outline" id="btn-request-access" style="display:none;">
+                            <i data-lucide="lock"></i>
+                            <span id="btn-request-text">Solicitar Acesso Especial</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-img">
+                    <img src="assets/images/foto-perfil.PNG" alt="Foto de Perfil">
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Projetos -->
+        <section id="projetos" class="section bg-alt">
+            <div class="container">
+                <h2 class="section-title" id="title-projects">Projetos</h2>
+                <div class="timeline">                   
+                    
+                    <!-- Projeto 1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="date" id="proj1-date">2025 - 2º Período da faculdade</span>
+                            <h3 id="proj1-title">RHFusion (RHSoft)</h3>
+                            <p id="proj1-desc">Aplicação web desenvolvida em equipe para otimização de processos corporativos e gestão de Recursos Humanos.</p>
+                            <div class="tech-stack">
+                                <span>React</span><span>Java Spring Boot</span><span>H2 Database</span><span>Git</span>
+                            </div>                       
+                        </div>
+                    </div>
+
+                    <!-- Projeto 2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="date" id="proj2-date">2026 - 3º Período da faculdade</span>
+                            <h3 id="proj2-title">FrotaSync (TI: Trabalho Interdisciplinar III)</h3>
+                            <p id="proj2-desc">O projeto FrotaSync visa modernizar e centralizar o gerenciamento de manutenção de veículos administrado por empresas intermediárias entre prefeituras e oficinas mecânicas.</p>
+                            <div class="tech-stack">
+                                <span>Typescript</span><span>Node.js</span><span>Express</span><span>Git</span>
+                            </div>                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Experiências -->
+        <section id="experiencias" class="section">
+            <div class="container">
+                <h2 class="section-title" id="title-exp">Experiências</h2>
+                <div class="cards-grid">
+                    <!-- Card 1 -->
+                    <div class="card">
+                        <h3 id="exp1-title">Análise e Desenvolvimento de Sistemas</h3>
+                        <span class="company">DMind</span>
+                        <span class="period" id="exp1-period">Abr 2025 - Presente</span>
+                        <p id="exp1-desc">Resolução de problemas e Desenvolvimento de software.</p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="card">
+                        <h3 id="exp2-title">Técnico em informatica</h3>
+                        <span class="company"><Cedaf-UFV></Cedaf-UFV></span>
+                        <span class="period" id="exp2-period">Fev 2022 - Jan 2025</span>
+                        <p id="exp2-desc">Desenvolvimento de Liderança, sistemas de computação, programação e manutenção de equipamentos.</p>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="card">
+                        <h3 id="exp3-title">Graduando em Engenharia de Software</h3>
+                        <span class="company">PUC Minas</span>
+                        <span class="period" id="exp3-period">Fev 2025 - Presente</span>
+                        <p id="exp3-desc">Desenvolvimento de Software, Liderança de Equipe, Gestão de Equipe e Gestão de Relacionamento com o Cliente.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Contato -->
+        <section id="contato" class="section bg-alt">
+            <div class="container">
+                <h2 class="section-title" id="title-contact">Contato</h2>
+                <div class="contact-wrapper">
+                    <div class="contact-info">
+                        <h3 id="contact-headline">Vamos conversar!</h3>
+                        <p id="contact-sub">Entre em contato através dos canais abaixo:</p>
+                        <div class="social-links">
+                            <a href="mailto:nogueirapedro651@gmail.com"><i data-lucide="mail"></i> nogueirapedro651@gmail.com</a>
+                            <a href="https://wa.me/5531995597489" target="_blank"><i data-lucide="phone"></i> <span id="whatsapp-label">WhatsApp</span>: (31) 997506981</a>
+                            <a href="https://www.linkedin.com/in/pedro-nogueira-464b18357/" target="_blank"><i data-lucide="linkedin"></i> LinkedIn</a>
+                            <a href="https://github.com/pedronogueira" target="_blank"><i data-lucide="github"></i> <span id="github-personal-label">GitHub Pessoal</span></a>
+                            <a href="https://github.com/PedroNogueira" target="_blank"><i data-lucide="graduation-cap"></i> <span id="github-academic-label">GitHub Acadêmico</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p id="footer-text">&copy; 2026 Pedro Nogueira. Todos os direitos reservados. | Lab01S01 - PUC Minas</p>
+        </div>
+    </footer>
+
+    <!-- ═══ Seção exclusiva: Contratante ══════════════════════════════════ -->
+    <section data-role="contractor" class="section rbac-section contractor-section" style="display:none;">
+        <div class="container">
+            <h2 class="section-title">
+                <i data-lucide="briefcase"></i> Informações para Recrutadores
+            </h2>
+            <div class="cards-grid">
+                <div class="card rbac-card">
+                    <h3>Currículo Completo</h3>
+                    <p>Acesse o PDF com histórico profissional detalhado, competências técnicas e referências.</p>
+                    <a href="#" data-pdf class="btn btn-primary" style="margin-top:1rem;">
+                        <i data-lucide="download"></i> Baixar Currículo (PDF)
+                    </a>
+                </div>
+                <div class="card rbac-card">
+                    <h3>Pretensão Salarial</h3>
+                    <p id="salary-range">CLT: R$ X.XXX — R$ X.XXX | PJ: R$ X.XXX/mês</p>
+                </div>
+                <div class="card rbac-card">
+                    <h3>Contato Direto</h3>
+                    <div class="social-links" style="margin-top:.5rem;">
+                        <a href="https://wa.me/5531997506981" target="_blank">
+                            <i data-lucide="phone"></i> WhatsApp direto
+                        </a>
+                        <a href="mailto:nogueirapedro651@gmail.com">
+                            <i data-lucide="mail"></i> nogueirapedro651@gmail.com
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ Seção exclusiva: Parceiro ════════════════════════════════════ -->
+    <section data-role="partner" class="section rbac-section partner-section" style="display:none;">
+        <div class="container">
+            <h2 class="section-title">
+                <i data-lucide="users"></i> Área de Parceiros
+            </h2>
+            <div class="cards-grid">
+                <div class="card rbac-card">
+                    <h3>Repositórios Privados</h3>
+                    <p>Acesso a projetos selecionados disponíveis para colaboração técnica.</p>
+                    <a href="https://github.com/PedroNogueira" target="_blank" class="btn btn-secondary" style="margin-top:1rem;">
+                        <i data-lucide="github"></i> Ver Repositórios
+                    </a>
+                </div>
+                <div class="card rbac-card">
+                    <h3>Propostas de Projeto</h3>
+                    <p>Aberto para coautoria e projetos freelance. Entre em contato para discutirmos termos e escopo.</p>
+                </div>
+                <div class="card rbac-card">
+                    <h3>Canal Direto</h3>
+                    <div class="social-links" style="margin-top:.5rem;">
+                        <a href="https://wa.me/5531997506981" target="_blank">
+                            <i data-lucide="phone"></i> WhatsApp
+                        </a>
+                        <a href="mailto:nogueirapedro651@gmail.com">
+                            <i data-lucide="mail"></i> nogueirapedro651@gmail.com
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ Modal: Solicitação de Acesso Especial (UC03) ═════════════════ -->
+    <div id="access-request-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-box">
+            <button id="modal-close" class="modal-close" aria-label="Fechar">
+                <i data-lucide="x"></i>
+            </button>
+            <div class="modal-header">
+                <i data-lucide="lock" class="modal-icon"></i>
+                <h2 id="modal-title">Solicitar Acesso Especial</h2>
+                <p>Preencha os dados abaixo e entraremos em contato para liberar seu acesso personalizado.</p>
+            </div>
+            <form id="access-request-form" novalidate>
+                <div class="form-group">
+                    <label for="req-name">Nome completo *</label>
+                    <input type="text" id="req-name" required placeholder="Seu nome">
+                </div>
+                <div class="form-group">
+                    <label for="req-org">Organização *</label>
+                    <input type="text" id="req-org" required placeholder="Empresa ou instituição">
+                </div>
+                <div class="form-group">
+                    <label for="req-linkedin">LinkedIn *</label>
+                    <input type="url" id="req-linkedin" required placeholder="https://linkedin.com/in/...">
+                </div>
+                <div class="form-group">
+                    <label for="req-purpose">Finalidade *</label>
+                    <textarea id="req-purpose" rows="3" required placeholder="Ex: Processo seletivo, proposta de parceria..."></textarea>
+                </div>
+                <p id="form-status" class="form-status"></p>
+                <button type="submit" class="btn btn-primary" style="width:100%;">Enviar Solicitação</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="assets/js/rbac.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
